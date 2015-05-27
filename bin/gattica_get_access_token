@@ -20,16 +20,16 @@ FOLLOW THE DIRECTIONS BELOW:
 
 -- Once you've done all that, enter your 'CLIENT ID':
 (Should look like 'NNNNNNNNNNNN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.apps.googleusercontent.com')"
-client_id = STDIN.gets.chomp
+client_id = ENV['OAUTH2_CLIENT_ID'] ||  STDIN.gets.chomp
 
 puts "\n\nenter your 'CLIENT SECRET':
 don't worry we won't tell :)"
-client_secret = STDIN.gets.chomp
+client_secret = ENV['OAUTH2_CLIENT_SECRET'] || STDIN.gets.chomp
 
 puts "\n\nenter all the scopes you want access to separated by spaces:
 for example 'https://www.googleapis.com/auth/analytics.readonly'
 see https://developers.google.com/gdata/faq#AuthScopes for a list"
-scope = STDIN.gets.chomp
+scope = ENV['OAUTH2_SCOPE'] || STDIN.gets.chomp
 
 http = Net::HTTP.new('accounts.google.com', 443)
 http.use_ssl = true
